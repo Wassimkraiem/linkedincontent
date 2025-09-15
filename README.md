@@ -2,44 +2,43 @@
 
 Welcome to the Linkedincontentagent Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
 
-## Installation
+# How to Run the App
 
-Ensure you have Python >=3.10 <3.14 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+Follow these steps to generate LinkedIn posts using the AI agents:
 
-First, if you haven't already, install uv:
+1. **Install Dependencies**
 
-```bash
-pip install uv
-```
+   - Make sure you have Python >=3.10 <3.14 installed.
+   - Install dependencies using [UV](https://docs.astral.sh/uv/):
+     ```bash
+     pip install uv
+     crewai install
+     ```
 
-Next, navigate to your project directory and install the dependencies:
+2. **Add Your OpenAI API Key**
 
-(Optional) Lock the dependencies and install them by using the CLI command:
+   - Copy your OpenAI API key into the `.env` file:
+     ```
+     OPENAI_API_KEY=your_openai_api_key_here
+     ```
 
-```bash
-crewai install
-```
+3. **Update Your Content Input**
 
-### Customizing
+   - Open [`src/linkedincontentagent/main.py`](src/linkedincontentagent/main.py).
+   - Find the `content_input` variable in the `run()` function:
+     ```python
+     content_input = "I'm bad and lazy at posting on LinkedIn so I built this AI agent to make that easier for me using CrewAI and OpenAI API."
+     ```
+   - Replace the value with your own thought, project, or event description.
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+4. **Run the App**
+   - From your project root, run:
+     ```bash
+     crewai run
+     ```
+   - The app will classify your input, generate a draft post, optimize it, and print the final LinkedIn post.
 
-- Modify `src/linkedincontentagent/config/agents.yaml` to define your agents
-- Modify `src/linkedincontentagent/config/tasks.yaml` to define your tasks
-- Modify `src/linkedincontentagent/crew.py` to add your own logic, tools and specific args
-- Modify `src/linkedincontentagent/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
-```
-
-This command initializes the linkedinContentAgent Crew, assembling the agents and assigning them tasks as defined in your configuration.
-
-This example, unmodified, will run the create a `report.md` file with the output of a research o# Linkedincontentagent Crew
+For advanced usage, see the rest of the README and the docstrings
 
 ## How to Use the AI Agents
 

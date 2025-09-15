@@ -1,16 +1,104 @@
-linkedin_content_creator:
-  tasks:
-    - Take raw thoughts, project descriptions, or event summaries and transform them into engaging LinkedIn posts.
-    - Add strong hooks that capture attention in the first 2–3 lines.
-    - Use storytelling techniques to make professional updates relatable and memorable.
-    - Ensure posts balance authenticity, professionalism, and value to the reader.
-    - Suggest relevant hashtags and emojis (when appropriate) for reach and tone.
-    - End posts with thought-provoking questions or CTAs to encourage engagement.
+# Classification Task
+classify_content_task:
+  agent: content_classifier
+  description: >
+    Analyze the input content and classify it as one of three types:
+    1. THOUGHT - Personal insights, opinions, industry observations, lessons learned, advice, hot takes
+    2. PROJECT - Work projects, achievements, milestones, launches, completions, results, case studies  
+    3. EVENT - Conferences, workshops, networking events, industry meetups, learning experiences
+    Return only the classification type (THOUGHT, PROJECT, or EVENT) and a brief explanation.
+  expected_output: >
+    A clear classification (THOUGHT, PROJECT, or EVENT) with a brief explanation of why the content fits that category.
 
-linkedin_growth_strategist:
-  tasks:
-    - Optimize posts for maximum visibility based on LinkedIn’s algorithm (formatting, structure, timing).
-    - Align posts with the user’s personal brand and long-term positioning.
-    - Suggest variations of posts (short-form, long-form, carousel-ready) for different content strategies.
-    - Recommend engagement strategies (commenting, cross-tagging, reposting) to amplify reach.
-    - Analyze which post styles/topics resonate most with the audience and adapt future content accordingly.
+# Thought Content Tasks
+create_thought_post_task:
+  agent: thought_content_creator
+  description: >
+    Transform personal thoughts, insights, and opinions into compelling thought leadership posts.
+    Focus on:
+    - Opening with a provocative or relatable hook
+    - Sharing personal perspective or contrarian viewpoint
+    - Backing opinions with experience or data
+    - Making complex ideas accessible
+    - Encouraging discussion and debate
+    - Using storytelling to make points memorable
+    - Ending with thought-provoking questions
+  expected_output: >
+    A thought leadership LinkedIn post that presents insights in an engaging, authoritative way with strong hooks, personal perspective, and discussion-driving questions.
+
+review_thought_post_task:
+  agent: thought_specialist
+  description: >
+    Review the thought leadership post for:
+    - Authenticity and credibility of the message
+    - Balance between confidence and humility
+    - Potential for meaningful engagement
+    - Professional tone while being conversational
+    - Clear value proposition for readers
+    - Appropriate use of hashtags and formatting
+    - Strong call-to-action for discussion
+  expected_output: >
+    An optimized thought leadership post with suggestions for improvement, refined messaging, and enhanced engagement potential.
+
+# Project Content Tasks
+create_project_post_task:
+  agent: project_content_creator
+  description: >
+    Transform project updates and achievements into engaging posts that showcase impact.
+    Focus on:
+    - Highlighting the problem solved or value created  
+    - Sharing the journey, not just the destination
+    - Including lessons learned and challenges overcome
+    - Quantifying results when possible
+    - Giving credit to team members and collaborators
+    - Making achievements relatable to others
+    - Inspiring others facing similar challenges
+  expected_output: >
+    A project showcase LinkedIn post that effectively communicates achievements while sharing valuable insights and inspiring others.
+
+review_project_post_task:
+  agent: project_specialist
+  description: >
+    Review the project post for:
+    - Balance between showcasing achievement and providing value
+    - Professional humility while highlighting impact
+    - Clear communication of lessons learned
+    - Proper credit attribution to team members
+    - Actionable insights for readers
+    - Appropriate metrics and results sharing
+    - Inspiring tone that motivates others
+  expected_output: >
+    An optimized project post that effectively showcases achievements while maintaining professional humility and providing valuable insights.
+
+# Event Content Tasks
+create_event_post_task:
+  agent: event_content_creator
+  description: >
+    Transform event experiences into valuable content that shares insights and builds connections.
+    Focus on:
+    - Key takeaways and learnings from the event
+    - Interesting conversations or networking moments
+    - Industry trends or insights discovered
+    - Actionable advice for the professional community
+    - Gratitude to organizers, speakers, and connections made
+    - Future implications of what was learned
+    - Encouraging others to attend similar events
+  expected_output: >
+    An event experience LinkedIn post that shares valuable takeaways, insights, and networking moments while encouraging community engagement.
+
+review_event_post_task:
+  agent: event_specialist
+  description: >
+    Review the event post for:
+    - Value delivered to readers who didn't attend
+    - Professional networking etiquette and gratitude
+    - Clear articulation of key learnings
+    - Potential for further discussion and connection
+    - Appropriate tagging of people and organizations
+    - Encouraging tone for community participation
+    - Strategic positioning for future opportunities
+    - CRITICAL: Ensure final post is exactly 1300-2000 characters (including spaces)
+    - If post is too short, add more insights or takeaways
+    - If post is too long, condense while keeping key value
+  expected_output: >
+    An optimized event post (1300-2000 characters) that maximizes value sharing, networking impact, and community engagement while maintaining professional standards.

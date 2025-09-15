@@ -15,9 +15,11 @@ pip install uv
 Next, navigate to your project directory and install the dependencies:
 
 (Optional) Lock the dependencies and install them by using the CLI command:
+
 ```bash
 crewai install
 ```
+
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
@@ -37,18 +39,56 @@ $ crewai run
 
 This command initializes the linkedinContentAgent Crew, assembling the agents and assigning them tasks as defined in your configuration.
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+This example, unmodified, will run the create a `report.md` file with the output of a research o# Linkedincontentagent Crew
+
+## How to Use the AI Agents
+
+This project leverages multiple specialized AI agents to automate and optimize LinkedIn content creation. Here’s how you can use them:
+
+1. **Content Classification**
+
+   - The system first analyzes your input and classifies it as a THOUGHT, PROJECT, or EVENT using a dedicated classifier agent.
+
+2. **Specialized Content Creation**
+
+   - Based on the classification, the appropriate content creator agent transforms your input into a draft LinkedIn post tailored for that category.
+
+3. **Expert Review and Optimization**
+
+   - A specialist agent reviews and refines the draft post to maximize engagement, authenticity, and professional impact.
+
+4. **Running the Workflow**
+
+   - To generate a LinkedIn post, run the following command from your project root:
+     ```bash
+     crewai run
+     ```
+   - The system will process your input, classify it, create a draft, and optimize the final post.
+
+5. **Customizing Inputs**
+
+   - You can modify the input content in [`src/linkedincontentagent/main.py`](src/linkedincontentagent/main.py) by changing the `content_input` variable.
+   - For advanced usage, you can define agents and tasks in [`src/linkedincontentagent/config/agents.yaml`](src/linkedincontentagent/config/agents.yaml) and [`src/linkedincontentagent/config/tasks.yaml`](src/linkedincontentagent/config/tasks.yaml).
+
+6. **Training, Testing, and Replay**
+   - Use the following commands for additional functionality:
+     - Train:
+       ```bash
+       crewai train <iterations> <output_file>
+       ```
+     - Test:
+       ```bash
+       crewai test <iterations> <eval_llm>
+       ```
+     - Replay:
+       ```bash
+       crewai replay <task_id>
+       ```
+
+For more details, see the docstrings and logic in [`src/linkedincontentagent/main.py`](src/linkedincontentagent/main.py).
+
+...existingn LLMs in the root folder.
 
 ## Understanding Your Crew
 
 The linkedinContentAgent Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the Linkedincontentagent Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
